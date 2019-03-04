@@ -1,0 +1,11 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+server:
+  port: 8770
+spring:
+  application:
+    name: eureka_zuul
+  main:
+    allow-bean-definition-overriding: true
