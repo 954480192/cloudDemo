@@ -12,3 +12,6 @@ server:
 spring:
   application:
     name: service-client
+
+
+
