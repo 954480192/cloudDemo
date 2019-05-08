@@ -9,9 +9,10 @@ spring:
       server:
         git:
           uri: https://github.com/954480192/test
-          username: 954480192@qq.com
-          password: 265628ad
-
+#          username: 954480192@qq.com
+#          password: 265628ad
+#          searchPaths：
+#      label：
 eureka:
   client:
     service-url:
