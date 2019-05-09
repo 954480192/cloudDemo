@@ -19,3 +19,34 @@ spring:
     #eviction-interval-timer-in-ms: 4000 # 清理间隔（单位毫秒，默认是60*1000）
 
 
+
+#---
+#spring:
+#  profiles: server1
+#  application:
+#    name: eurka-server
+#server:
+#  port: 8780
+#eureka:
+#  instance:
+#    hostname: server1
+#  client:
+#    serviceUrl:
+#      defaultZone: http://server2:8769/eureka/
+#
+#---
+#spring:
+#  profiles: server2
+#  application:
+#    name: eurka-server
+#server:
+#  port: 8769
+#eureka:
+#  instance:
+#    hostname: server2
+#  client:
+#    serviceUrl:
+#      defaultZone: http://server1:8780/eureka/
+
+
+
