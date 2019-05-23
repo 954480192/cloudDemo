@@ -6,13 +6,14 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="EurekaFeign" />
+        <module name="consul-provider" />
         <module name="zuul" />
+        <module name="EurekaFeign" />
         <module name="consul-consumer" />
         <module name="Eureka_Client" />
         <module name="server" />
         <module name="feign" />
-        <module name="consul-provider" />
+        <module name="user" />
         <module name="ribbon" />
         <module name="Eureka_Server" />
         <module name="config-server" />
@@ -34,6 +35,7 @@
       <module name="feign" options="-parameters" />
       <module name="ribbon" options="-parameters" />
       <module name="server" options="-parameters" />
+      <module name="user" options="-parameters" />
       <module name="zuul" options="-parameters" />
     </option>
   </component>
