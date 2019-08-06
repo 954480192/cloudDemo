@@ -6,6 +6,7 @@ import org.hibernate.annotations.GeneratorType;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Data
@@ -17,5 +18,6 @@ public class User {
 //    @GenericGenerator(name = "id",strategy = "uuid")
     Integer id;
 //    @Transient
+    @NotNull
     String name;
 }
