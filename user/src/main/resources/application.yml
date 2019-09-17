@@ -2,7 +2,7 @@ server:
   port: 8866
 
 spring:
-#  mvc:
+  #  mvc:
 #    view:
 #      prefix: /WEB-INF/jsp/
 #      suffix: .jsp
@@ -33,8 +33,20 @@ spring:
     #配置监控统计拦截的filters，去掉后监控界面sql将无法统计,'wall'用于防火墙
     filters: stat, wall, log4j
   jpa:
+    open-in-view: true
     show_sql: true
     format_sql: true,
     hibernate:
       ddl-auto: update
+
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    jedis:
+      pool:
+        max-active: 20
+        max-idle: 20
+        min-idle: 1
+        max-wait: 600000
+      database: 0 # 默认索引为0的数据库
 

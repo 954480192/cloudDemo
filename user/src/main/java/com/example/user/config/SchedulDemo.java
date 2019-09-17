@@ -6,9 +6,11 @@ import org.quartz.impl.JobDetailImpl;
 import org.quartz.impl.StdSchedulerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
 
 import java.time.LocalDateTime;
+import java.util.Random;
 
 @Configuration
 public class SchedulDemo {
@@ -28,9 +30,17 @@ public class SchedulDemo {
     initialDelay:第一次执行延迟时间(秒）
     fixedDelay:会等到方法执行完成后延迟
      */
-    @Scheduled(cron = "0/10 * * ? * *")
+//    @Scheduled(cron = "0/10 * * ? * *")
+//    @Scheduled(fixedRate = 2000)
     public void test(){
-        System.out.println("定时器触发时间："+ LocalDateTime.now().getSecond());
+//        int r = new Random().nextInt(20000);
+//        try {
+//            System.out.println(r);
+//            Thread.sleep(r);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+        System.out.println("  定时器触发时间："+ LocalDateTime.now().getSecond());
     }
 
     public void newSchedul() throws SchedulerException {

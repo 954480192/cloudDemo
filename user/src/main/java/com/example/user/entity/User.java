@@ -1,5 +1,6 @@
 package com.example.user.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.Generated;
 import org.hibernate.annotations.GeneratorType;
@@ -12,19 +13,15 @@ import java.util.List;
 
 @Entity
 @Data
-@Table(name = "test")
+@Table(name = "user")
 public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @GeneratedValue(generator = 'id')
-//    @GenericGenerator(name = "id",strategy = "uuid")
     Integer id;
 //    @Transient
     @NotNull
     String name;
     String password;
-//    @ManyToMany
-//    @JoinTable(name = "UserRole",joinColumns = {@JoinColumn(name = "userId")},inverseJoinColumns = {@JoinColumn(name = "roleId")})
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "user")
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "user",fetch = FetchType.EAGER)
     private List<Role> roles;
 }
