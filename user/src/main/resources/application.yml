@@ -50,3 +50,5 @@ spring:
         max-wait: 600000
       database: 0 # 默认索引为0的数据库
 
+
+

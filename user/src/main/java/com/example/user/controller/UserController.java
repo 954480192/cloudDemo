@@ -6,12 +6,16 @@ import com.example.user.util.Message;
 //import org.apache.shiro.authc.UsernamePasswordToken;
 //import org.apache.shiro.authz.annotation.RequiresPermissions;
 //import org.apache.shiro.subject.Subject;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.concurrent.ExecutionException;
+
+@Slf4j
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -41,5 +45,20 @@ public class UserController {
 //        }
 //        return "false";
 //    }
+
+    //async接口测试
+    @RequestMapping("async")
+    public Object ayncTest(){
+        log.info("开始");
+        String s = null;
+        try {
+            userService.asyncTest();
+//            s = userService.asyncTest().get();
+            log.info("结束");
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+        return s;
+    }
 
 }

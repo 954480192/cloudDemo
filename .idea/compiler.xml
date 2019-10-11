@@ -8,17 +8,17 @@
         <outputRelativeToContentRoot value="true" />
         <module name="consul-provider" />
         <module name="zuul" />
-        <module name="client" />
+        <module name="EurekaFeign" />
+        <module name="consul-consumer" />
         <module name="Eureka_Client" />
-        <module name="config-server" />
-        <module name="ribbon" />
+        <module name="server" />
         <module name="feign" />
         <module name="user" />
-        <module name="consul-consumer" />
+        <module name="ribbon" />
         <module name="Eureka_Server" />
-        <module name="server" />
+        <module name="config-server" />
         <module name="config-client" />
-        <module name="EurekaFeign" />
+        <module name="client" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

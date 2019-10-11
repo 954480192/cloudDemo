@@ -30,17 +30,19 @@ public class SchedulDemo {
     initialDelay:第一次执行延迟时间(秒）
     fixedDelay:会等到方法执行完成后延迟
      */
-//    @Scheduled(cron = "0/10 * * ? * *")
+    @Scheduled(cron = "0/10 * * ? * *")
 //    @Scheduled(fixedRate = 2000)
     public void test(){
 //        int r = new Random().nextInt(20000);
-//        try {
+        System.out.println("  定时器触发时间："+ LocalDateTime.now().getSecond());
+        try {
 //            System.out.println(r);
 //            Thread.sleep(r);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-        System.out.println("  定时器触发时间："+ LocalDateTime.now().getSecond());
+            Thread.sleep(15000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
     }
 
     public void newSchedul() throws SchedulerException {

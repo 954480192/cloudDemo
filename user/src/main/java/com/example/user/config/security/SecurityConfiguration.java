@@ -52,6 +52,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                     .permitAll()// 自定义登陆页面路径
                     .and()
                 .logout().logoutSuccessUrl("/");// 退出后到首页
+//                     .and()
+//                .sessionManagement().invalidSessionUrl("session/invalid");    //session过期后跳转的URL
 //                .invalidateHttpSession(true).deleteCookies("JSESSIONID")
         http.addFilterBefore(mobileCodeAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
         //默认都会产生一个hiden标签 里面有安全相关的验证 防止请求伪造 这边我们暂时不需要 可禁用掉
