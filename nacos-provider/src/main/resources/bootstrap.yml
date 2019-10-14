@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: nacos-provide
+  #读取未nacos-provide-dev.yml(会合并nacos-provide.yml)的内容
+#  profiles:
+#    active: dev
+  cloud:
+    nacos:
+      #注册到命名空间为test的服务下
+#      discovery:
+#        server-addr: 127.0.0.1:8848
+#        namespace: 8c888ae4-f1f6-4d55-8e83-a44d9ae120a3
+#        group: TEST_GROUP
+      #读取命名空间未dev的配置
+      config:
+        server-addr: 127.0.0.1:8848
+        prefix: ${spring.application.name}
+        file-extension: yml
+
+#        namespace: fd6dfb62-3a94-4429-a587-7878b2a8f3ab
+#        group: DEV_GROU
+
+        #共享配置(需要和主要配置文件在同一命名空间下)
+#        shared-dataids: shareconfig1.yml,shareconfig2.yml
+#        refreshable-dataids: shareconfig1.yml,shareconfig2.yml
+#        不同分组下的共享配置
+#        ext-config:
+#          - data-id: shareconfig3.yml
+#            group: DEV_GROUP
+#            refresh: true
+#          - data-id: shareconfig4.yml
+#            group: TEST_GROUP
+#            refresh: true

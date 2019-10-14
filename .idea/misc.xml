@@ -18,6 +18,8 @@
         <option value="$PROJECT_DIR$/consul-provider/pom.xml" />
         <option value="$PROJECT_DIR$/consul-consumer/pom.xml" />
         <option value="$PROJECT_DIR$/user/pom.xml" />
+        <option value="$PROJECT_DIR$/nacos-provider/pom.xml" />
+        <option value="$PROJECT_DIR$/nacos-comsumer/pom.xml" />
       </list>
     </option>
   </component>
