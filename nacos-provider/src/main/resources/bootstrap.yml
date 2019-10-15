@@ -5,6 +5,17 @@ spring:
 #  profiles:
 #    active: dev
   cloud:
+    sentinel:
+      transport:
+        port: 8719
+        dashboard: localhost:8090
+      datasource:
+        ds:
+          nacos:
+            server-addr: localhost:8848
+            dataId: ${spring.application.name}-sentinel
+            groupId: DEFAULT_GROUP
+            ruleType: flow
     nacos:
       #注册到命名空间为test的服务下
 #      discovery:

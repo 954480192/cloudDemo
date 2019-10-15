@@ -1,5 +1,6 @@
 package com.zp.nacoscomsumer;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -31,6 +32,7 @@ public class NacosComsumerApplication {
     }
 
     @GetMapping("/consumer")
+    @SentinelResource(value="consumer")
     public String test1() {
         return restTemplate.getForObject("http://nacos-provide/helloNacos",String.class);
     }

@@ -1,5 +1,7 @@
 package com.zp.nacosprovider;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
+import com.alibaba.csp.sentinel.slots.block.BlockException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -21,8 +23,16 @@ public class NacosProviderApplication {
     }
 
     @GetMapping("/helloNacos")
+    @SentinelResource(value="helloNacos",fallback = "helloFallbackHandler",blockHandler = "blockHandler")
     public String helloNacos(){
         return "你好，nacos！";
+    }
+
+    public String blockHandler(BlockException block){
+        return block.getMessage()+"-----请稍后再试！";
+    }
+    public String helloFallbackHandler(){
+        return "服务器开小差了！！！";
     }
 
     @Value("${nacos.config}")
