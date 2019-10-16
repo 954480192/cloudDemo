@@ -5,10 +5,12 @@ spring:
 #  profiles:
 #    active: dev
   cloud:
+    #sentinel 配置
     sentinel:
       transport:
         port: 8719
         dashboard: localhost:8090
+      #sentinel规则持久化（就是从nacos读取配置）
       datasource:
         ds:
           nacos:
@@ -18,8 +20,8 @@ spring:
             ruleType: flow
     nacos:
       #注册到命名空间为test的服务下
-#      discovery:
-#        server-addr: 127.0.0.1:8848
+      discovery:
+        server-addr: 127.0.0.1:8848
 #        namespace: 8c888ae4-f1f6-4d55-8e83-a44d9ae120a3
 #        group: TEST_GROUP
       #读取命名空间未dev的配置

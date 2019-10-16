@@ -1,0 +1,49 @@
+
+server:
+  port: 8000
+
+spring:
+  application:
+    name: admin-server
+  boot:
+    #    此处为SpringBootAdmin配置
+    admin:
+      ui:
+        #        web界面的title
+        title: 服务健康检查
+      #        邮件提醒
+#      notify:
+#        mail:
+#          #          发给谁
+#          to: kichunwang@foxmail.com
+#          #          谁发的
+#          from: 184375760@qq.com
+#  #  spring mail邮件配置
+#  mail:
+#    #    smtp主机
+#    host: smtp.qq.com
+#    #   发件人账号
+#    username: 184375760@qq.com
+#    #   发件人密码，如qq邮箱等使用的是授权码
+#    password: bogffhsssi这个请大佬改成自己密码ihb
+#  security:
+#    user:
+#      name: admin
+#      password: admin
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+
+#开启端点
+management:
+#  security:
+#    enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+#        exclude: env,beans
+  endpoint:
+    health:
+      show-details: ALWAYS

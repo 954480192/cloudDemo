@@ -22,28 +22,5 @@ public class NacosComsumerApplication {
         SpringApplication.run(NacosComsumerApplication.class, args);
     }
 
-    @Autowired
-    private RestTemplate restTemplate;
 
-    @Bean
-    @LoadBalanced
-    public RestTemplate getRestTemplate(){
-        return new RestTemplate();
-    }
-
-    @GetMapping("/consumer")
-    @SentinelResource(value="consumer")
-    public String test1() {
-        return restTemplate.getForObject("http://nacos-provide/helloNacos",String.class);
-    }
-
-
-    // ---------------- feign ------------------
-    @Autowired
-    private RemoteClient remoteClient;
-
-    @GetMapping("/feign")
-    public String test() {
-        return remoteClient.helloNacos();
-    }
 }

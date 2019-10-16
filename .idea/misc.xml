@@ -20,6 +20,8 @@
         <option value="$PROJECT_DIR$/user/pom.xml" />
         <option value="$PROJECT_DIR$/nacos-provider/pom.xml" />
         <option value="$PROJECT_DIR$/nacos-comsumer/pom.xml" />
+        <option value="$PROJECT_DIR$/springbootadmin-server/pom.xml" />
+        <option value="$PROJECT_DIR$/common/pom.xml" />
       </list>
     </option>
   </component>

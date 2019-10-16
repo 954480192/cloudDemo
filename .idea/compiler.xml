@@ -16,6 +16,8 @@
         <module name="zuul" />
         <module name="server" />
         <module name="consul-provider" />
+        <module name="springbootadmin-server" />
+        <module name="common" />
         <module name="Eureka_Server" />
         <module name="Eureka_Client" />
         <module name="user" />
@@ -30,6 +32,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="client" options="-parameters" />
+      <module name="common" options="-parameters" />
       <module name="config-client" options="-parameters" />
       <module name="config-server" options="-parameters" />
       <module name="consul-consumer" options="-parameters" />
@@ -39,6 +42,7 @@
       <module name="nacos-provider" options="-parameters" />
       <module name="ribbon" options="-parameters" />
       <module name="server" options="-parameters" />
+      <module name="springbootadmin-server" options="-parameters" />
       <module name="user" options="-parameters" />
       <module name="zuul" options="-parameters" />
     </option>

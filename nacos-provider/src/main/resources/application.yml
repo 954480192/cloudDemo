@@ -1,20 +1,43 @@
-#server:
-#  port: 9527
+server:
+  port: 9527
 
-#spring:
-#  cloud:
-#    nacos:
-#      discovery:
-#        server-addr: 127.0.0.1:8848
-#    sentinel:
-#      transport:
-#        port: 8719
-#        dashboard: localhost:8090
-#      datasource:
-#        ds:
-#          nacos:
-#            server-addr: localhost:8848
-#            dataId: ${spring.application.name}-sentinel
-#            groupId: DEFAULT_GROUP
-#            ruleType: flow
-            # 以上属性可查看NacosDataSourceProperties 和 DataSourcePropertiesConfiguration 该类
+nacos:
+  config: public
+
+spring:
+  application:
+    name: nacos-provide
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+  #  security:
+#    user:
+#      name: zp
+#      password: b
+  boot:
+    admin:
+      client:
+        url: http://localhost:8000
+#        username: admin
+#        password: admin
+#        instance:
+#          name: ${spring.application.name}
+#          metadata: # 这个name与password用于在注册到管理端时，使管理端有权限获取客户端端点数据
+#            user:
+#              name: ${spring.security.user.name}
+#              password: ${spring.security.user.password}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  # 展示endpoint细节信息  细节信息，包括磁盘、cpu、内存使用情况
+  endpoint:
+    health:
+      show-details: ALWAYS
+
+info:
+  app: nacos-provide-demo
+

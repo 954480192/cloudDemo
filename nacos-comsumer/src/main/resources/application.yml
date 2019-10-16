@@ -12,7 +12,20 @@ spring:
       transport:
         port: 8719
         dashboard: localhost:8090
-
+  boot:
+    admin:
+      client:
+        url: http://localhost:8000
 feign:
   sentinel:
     enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  # 展示endpoint细节信息  细节信息，包括磁盘、cpu、内存使用情况
+  endpoint:
+    health:
+      show-details: ALWAYS
