@@ -30,7 +30,7 @@ public class SchedulDemo {
     initialDelay:第一次执行延迟时间(秒）
     fixedDelay:会等到方法执行完成后延迟
      */
-    @Scheduled(cron = "0/10 * * ? * *")
+//    @Scheduled(cron = "0/10 * * ? * *")
 //    @Scheduled(fixedRate = 2000)
     public void test(){
 //        int r = new Random().nextInt(20000);

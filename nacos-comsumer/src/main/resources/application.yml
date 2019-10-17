@@ -16,6 +16,11 @@ spring:
     admin:
       client:
         url: http://localhost:8000
+  zipkin:
+    base-url: http://localhost:9620
+  sleuth:
+    sampler:
+      percentage: 1 #抓取100%的日志 默认0.1
 feign:
   sentinel:
     enabled: true

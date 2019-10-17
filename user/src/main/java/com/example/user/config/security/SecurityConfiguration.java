@@ -39,7 +39,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                    .antMatchers("/","/mobileCodeLogin","/login","/home").permitAll() // 这三个目录不做安全控制
+                    .antMatchers("/","/user/all","/druid/*","/mobileCodeLogin","/login","/home").permitAll() // 这三个目录不做安全控制
                     .anyRequest().authenticated()
                     .and()
                 .formLogin()

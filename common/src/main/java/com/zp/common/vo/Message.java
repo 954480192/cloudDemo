@@ -10,7 +10,9 @@ public class Message {
 
     public Message() {
     }
-
+    public Message(Object data) {
+        this.data = data;
+    }
     public Message(String msg, boolean success, Object data) {
         this.msg = msg;
         this.success = success;

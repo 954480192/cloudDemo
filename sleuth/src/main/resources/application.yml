@@ -1,0 +1,22 @@
+
+server:
+  port: 9620
+
+spring:
+  application:
+    name: nacos-sleth-server
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+
+#management:
+#  security:
+#    enabled: false #关闭验证
+#info: #/info请求的显示信息
+#  app:
+#    name: ${spring.application.name}
+#    version: 1.0.0
+#  build:
+#    artifactId: @project.artifactId@
+#    version: @project.version@
