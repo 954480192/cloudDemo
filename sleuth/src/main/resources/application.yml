@@ -1,16 +1,23 @@
 
 server:
-  port: 9620
+  port: 9411
 
 spring:
   application:
-    name: nacos-sleth-server
+    name: nacos-sleuth-server
+  main:
+    allow-bean-definition-overriding: true
   cloud:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
 
-#management:
+# 关闭自动配置启用所有请求得检测
+management:
+  metrics:
+    web:
+      server:
+        auto-time-requests: false # 关闭自动配置启用所有请求得检测
 #  security:
 #    enabled: false #关闭验证
 #info: #/info请求的显示信息

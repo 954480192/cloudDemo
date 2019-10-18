@@ -50,5 +50,9 @@ spring:
         max-wait: 600000
       database: 0 # 默认索引为0的数据库
 
-
+  zipkin:
+    base-url: http://localhost:9620
+  sleuth:
+    sampler:
+      percentage: 1 #抓取100%的日志 默认0.1
 
