@@ -25,6 +25,7 @@ public class UserController {
 //    @RequiresPermissions("add")// 权限
     @RequestMapping("all")
     public Message getAll(){
+        log.info("进入user服务，开始查询数据");
         Message msg = new Message();
         msg.setData(userService.getAll());
         return msg;

@@ -8,22 +8,22 @@
         <outputRelativeToContentRoot value="true" />
         <module name="ribbon" />
         <module name="config-server" />
-        <module name="config-client" />
+        <module name="sleuth" />
         <module name="client" />
         <module name="feign" />
         <module name="EurekaFeign" />
         <module name="nacos-provider" />
-        <module name="sleuth" />
+        <module name="config-client" />
         <module name="zuul" />
         <module name="server" />
+        <module name="consul-consumer" />
         <module name="consul-provider" />
-        <module name="springbootadmin-server" />
         <module name="common" />
         <module name="Eureka_Server" />
         <module name="Eureka_Client" />
         <module name="user" />
         <module name="nacos-comsumer" />
-        <module name="consul-consumer" />
+        <module name="springbootadmin-server" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

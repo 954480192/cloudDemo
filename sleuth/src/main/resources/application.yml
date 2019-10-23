@@ -27,3 +27,23 @@ management:
 #  build:
 #    artifactId: @project.artifactId@
 #    version: @project.version@
+
+
+zipkin:
+  collector:
+    rabbitmq:
+      addresses: 127.0.0.1
+      port: 5672
+      username: guest
+      password: guest
+#      virtual-host: vh1
+      queue: zipkin
+  storage:
+    StorageComponent: elasticsearch
+    type: elasticsearch
+    elasticsearch:
+      hosts: 127.0.0.1:9200
+      cluster: elasticsearch
+      index: zipkin
+      index-shards: 5
+      index-replicas: 1

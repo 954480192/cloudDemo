@@ -1,6 +1,8 @@
 package com.example.user.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.Generated;
 import org.hibernate.annotations.GeneratorType;
@@ -14,11 +16,14 @@ import java.util.List;
 @Entity
 @Data
 @Table(name = "user")
+@ApiModel(description="用户实体")
 public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
+
 //    @Transient
+    @ApiModelProperty("用户姓名")
     @NotNull
     String name;
     String password;
