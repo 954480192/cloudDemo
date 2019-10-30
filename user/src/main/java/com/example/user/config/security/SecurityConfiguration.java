@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.BeanIds;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -16,11 +17,17 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+
+/**
+ * ResourceServerConfigurerAdapter 用于保护oauth相关的endpoints，同时主要作用于用户的登录(form login,Basic auth)
+ * SecurityConfig 用于保护oauth要开放的资源，同时主要作用于client端以及token的认证(Bearer auth)
+ */
 @Configuration
 @EnableWebSecurity
-@EnableAuthorizationServer
+@Order(2)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
@@ -54,7 +61,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/swagger-resources/configuration/ui/**",
                         "/swagger-resources/configuration/security/**",
                         "/images/**", "/css/**").permitAll()
-                    .antMatchers("/loginPage", "/authentication/require","/","/user/all","/druid/*","/mobileCodeLogin","/login","/home").permitAll() // 这三个目录不做安全控制
+                    .antMatchers("/loginPage", "/authentication/require","/","/user/all",
+                            "/druid/*","/mobileCodeLogin","/login","/home").permitAll() // 这三个目录不做安全控制
                     .anyRequest().authenticated()
                     .and()
                 .formLogin()

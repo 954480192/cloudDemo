@@ -22,7 +22,6 @@ import java.util.List;
 
 @Configuration
 @EnableAuthorizationServer
-@EnableResourceServer
 public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
 
     @Autowired
