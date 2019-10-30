@@ -66,7 +66,8 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                     .accessTokenValiditySeconds(3600)
                     .refreshTokenValiditySeconds(864000)  // 10天
                     .scopes("all", "a", "b", "c")
-                    .authorizedGrantTypes("password", "refresh_token")
+                    .redirectUris("http://localhost:8866/")
+                    .authorizedGrantTypes("password", "refresh_token","authorization_code")
                 .and()
                     .withClient("test2")
                     .secret(new BCryptPasswordEncoder().encode("test2222"))

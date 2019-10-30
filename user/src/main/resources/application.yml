@@ -2,9 +2,9 @@ server:
   port: 8866
 
 spring:
-#  thymeleaf:
-#    prefix: classpath:/template/
-#    suffix: .html
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
 #    cache: false
   #  mvc:
 #    view:
@@ -80,7 +80,7 @@ security:
     client:
       client-id: test
       client-secret: test1234
-#      registered-redirect-uri: https://www.baidu.com
+      registered-redirect-uri: https://www.baidu.com
 #      access-token-uri: http://localhost:${server.port}/oauth/token
 #      user-authorization-uri: http://localhost:${server.port}/oauth/authorize
 #    resource:
