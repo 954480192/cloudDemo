@@ -4,12 +4,12 @@ import com.example.user.config.oauth.service.BootClientDetailsService;
 import com.example.user.config.oauth.service.UserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
-import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
@@ -17,7 +17,6 @@ import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 
 import java.util.ArrayList;
-import java.util.Base64;
 import java.util.List;
 
 @Configuration
@@ -53,6 +52,8 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 .userDetailsService(userDetailService);
         // 最后一个参数为替换之后授权页面的url
         endpoints.pathMapping("/oauth/confirm_access","/custom/confirm_access");
+//        默认只支持post  这里添加get支持
+        endpoints.allowedTokenEndpointRequestMethods(HttpMethod.GET, HttpMethod.POST);// add get method
     }
 
     @Override
@@ -66,7 +67,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                     .accessTokenValiditySeconds(3600)
                     .refreshTokenValiditySeconds(864000)  // 10天
                     .scopes("all", "a", "b", "c")
-                    .redirectUris("http://localhost:8866/")
+                    .redirectUris("http://www.baidu.com")
                     .authorizedGrantTypes("password", "refresh_token","authorization_code")
                 .and()
                     .withClient("test2")
@@ -74,7 +75,4 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                     .accessTokenValiditySeconds(7200);
     }
 
-    public static void main(String[] args) {
-        System.out.println(Base64.getEncoder().encodeToString("test1:test1111".getBytes()));
-    }
 }
