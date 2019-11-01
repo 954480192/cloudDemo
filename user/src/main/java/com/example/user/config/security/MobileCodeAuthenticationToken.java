@@ -19,7 +19,9 @@ public class MobileCodeAuthenticationToken extends AbstractAuthenticationToken {
     private String credentials;
 
     public MobileCodeAuthenticationToken(Object principal, String credentials) {
+        //因为刚开始并没有认证，因此用户没有任何权限，并且设置没有认证的信息（setAuthenticated(false)）
         super(null);
+        //这里的principal就是手机号
         this.principal = principal;
         this.credentials = credentials;
         setAuthenticated(false);

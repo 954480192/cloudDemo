@@ -22,12 +22,12 @@ public class UserService{
     @Autowired
     UserDao userDao;
 
-//    @Cacheable(cacheNames = "user.all")
+    @Cacheable(cacheNames = "user.all")
     public List<User> getAll() {
         return userDao.findAll();
     }
 
-//    @CacheEvict(cacheNames = "user.all")
+    @CacheEvict(cacheNames = "user.all")
     public void evict() {
     }
 
