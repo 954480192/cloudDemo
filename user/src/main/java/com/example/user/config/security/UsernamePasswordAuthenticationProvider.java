@@ -47,7 +47,7 @@ public class UsernamePasswordAuthenticationProvider implements AuthenticationPro
         }
 
         UsernamePasswordAuthenticationToken result = new UsernamePasswordAuthenticationToken(username,
-                authentication.getCredentials(), listUserGrantedAuthorities(username));
+                authentication.getCredentials(), listUserGrantedAuthorities(user));
         result.setDetails(authentication.getDetails());
         return result;
     }
@@ -57,13 +57,8 @@ public class UsernamePasswordAuthenticationProvider implements AuthenticationPro
         return (UsernamePasswordAuthenticationToken.class.isAssignableFrom(authentication));
     }
 
-    private Set<GrantedAuthority> listUserGrantedAuthorities(String username) {
+    private Set<GrantedAuthority> listUserGrantedAuthorities(User user) {
         Set<GrantedAuthority> authorities = new HashSet<GrantedAuthority>();
-        if (StringUtils.isEmpty(username)) {
-            return authorities;
-        }
-
-        User user = userDao.findByName(username);
         user.getRoles().forEach(role -> {
            authorities.add(new SimpleGrantedAuthority(role.getRole()));
         });

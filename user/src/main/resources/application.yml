@@ -80,7 +80,7 @@ security:
     client:
       client-id: test
       client-secret: test1234
-      registered-redirect-uri: https://www.baidu.com
+      registered-redirect-uri: http://localhost:8866
 #      access-token-uri: http://localhost:${server.port}/oauth/token
 #      user-authorization-uri: http://localhost:${server.port}/oauth/authorize
 #    resource:

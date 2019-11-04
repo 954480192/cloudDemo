@@ -62,7 +62,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/swagger-resources/configuration/security/**",
                         "/images/**", "/css/**").permitAll()
                     .antMatchers("/loginPage", "/authentication/require","/","/user/all",
-                            "/druid/*","oauth/**","/mobileCodeLogin","/login","/home").permitAll() // 这三个目录不做安全控制
+                            "/druid/*","/client/api/**","oauth/**","/mobileCodeLogin","/login","/home").permitAll() // 这三个目录不做安全控制
                     .anyRequest().authenticated()
                     .and()
                 .formLogin()

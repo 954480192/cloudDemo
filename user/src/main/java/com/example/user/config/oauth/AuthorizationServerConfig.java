@@ -50,7 +50,10 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 .tokenEnhancer(enhancerChain)
                 .accessTokenConverter(jwtAccessTokenConverter)
                 .userDetailsService(userDetailService);
-        // 最后一个参数为替换之后授权页面的url
+        //reuseRefreshTokens设置为false时，每次通过refresh_token获得access_token时，也会刷新refresh_token；也就是说，会返回全新的access_token与refresh_token。
+        //默认值是true，只返回新的access_token，refresh_token不变。
+        endpoints.reuseRefreshTokens(true);
+        // 自定义授权页面接口路径，最后一个参数为替换之后授权页面的url
         endpoints.pathMapping("/oauth/confirm_access","/custom/confirm_access");
 //        默认只支持post  这里添加get支持
         endpoints.allowedTokenEndpointRequestMethods(HttpMethod.GET, HttpMethod.POST);// add get method
@@ -66,9 +69,12 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                     .secret(new BCryptPasswordEncoder().encode("test1111"))
                     .accessTokenValiditySeconds(3600)
                     .refreshTokenValiditySeconds(864000)  // 10天
+                    // 允许的授权范围
                     .scopes("all", "a", "b", "c")
-                    .redirectUris("http://www.baidu.com")
-                    .authorizedGrantTypes("password", "refresh_token","authorization_code")
+                    //回调uri，在authorization_code与implicit授权方式时，用以接收服务器的返回信息
+                    .redirectUris("http://localhost:8866")
+                    // 该client允许的授权类型，不同的类型，则获得token的方式不一样。
+                    .authorizedGrantTypes("password", "refresh_token","authorization_code","implicit")
                 .and()
                     .withClient("test2")
                     .secret(new BCryptPasswordEncoder().encode("test2222"))
