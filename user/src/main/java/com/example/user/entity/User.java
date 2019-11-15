@@ -18,6 +18,7 @@ import java.util.List;
 @Table(name = "user")
 @ApiModel(description="用户实体")
 public class User implements Serializable {
+    private final static long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
