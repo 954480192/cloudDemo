@@ -19,6 +19,10 @@ import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenCo
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * http://localhost:8866/oauth/authorize?client_id=test1&redirect_uri=http://localhost:8866&response_type=code
+ * http://localhost:8866/oauth/token?grant_type=authorization_code&client_id=test1&client_secret=test1111&redirect_uri=http://localhost:8866&code=z8jP3V
+ */
 @Configuration
 @EnableAuthorizationServer
 public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {

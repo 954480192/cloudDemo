@@ -23,6 +23,7 @@
         <module name="Eureka_Client" />
         <module name="user" />
         <module name="nacos-comsumer" />
+        <module name="cloud_common" />
         <module name="consul-consumer" />
       </profile>
     </annotationProcessing>
@@ -33,6 +34,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="client" options="-parameters" />
+      <module name="cloud_common" options="-parameters" />
       <module name="common" options="-parameters" />
       <module name="config-client" options="-parameters" />
       <module name="config-server" options="-parameters" />

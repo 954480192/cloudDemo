@@ -6,6 +6,9 @@ import com.example.user.util.Message;
 //import org.apache.shiro.authc.UsernamePasswordToken;
 //import org.apache.shiro.authz.annotation.RequiresPermissions;
 //import org.apache.shiro.subject.Subject;
+import com.zp.cloud_common.components.UserException;
+import com.zp.cloud_common.utils.ResponseVo;
+import com.zp.cloud_common.utils.ResultVo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +24,17 @@ import java.util.concurrent.ExecutionException;
 public class UserController {
     @Autowired
     UserService userService;
+
+    @RequestMapping("test")
+    public Object test(){
+        throw new UserException(90,"抛出异常------");
+//        return userService.getAll();
+    }
+
+    @RequestMapping("test1")
+    public ResultVo test1(){
+        return ResponseVo.success(userService.getAll());
+    }
 
 //    @RequiresPermissions("add")// 权限
     @RequestMapping("all")

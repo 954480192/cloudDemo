@@ -40,13 +40,13 @@ public class LoginController {
         return "base-login";
     }
 
-    @GetMapping("/logout")
-    public String wuJinLogout(@RequestParam("token")String accessToken){
-        //注销token
-        if (consumerTokenServices.revokeToken(accessToken)) {
-            return "login";
-        }
-        return "/login?error";
-    }
+//    @GetMapping("/logout")
+//    public String wuJinLogout(@RequestParam("token")String accessToken){
+//        //注销token
+//        if (consumerTokenServices.revokeToken(accessToken)) {
+//            return "login";
+//        }
+//        return "/login?error";
+//    }
 
 }

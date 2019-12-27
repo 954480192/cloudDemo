@@ -27,7 +27,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
  */
 @Configuration
 @EnableWebSecurity
-@Order(2)
+//@Order(2)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
@@ -62,7 +62,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/swagger-resources/configuration/security/**",
                         "/images/**", "/css/**").permitAll()
                     .antMatchers("/loginPage", "/authentication/require","/","/user/all",
-                            "/druid/*","/client/api/**","oauth/**","/mobileCodeLogin","/login","/home").permitAll() // 这三个目录不做安全控制
+                            "/druid/**","/oauth/**","/mobileCodeLogin","/login","/home").permitAll() // 这三个目录不做安全控制
                     .anyRequest().authenticated()
                     .and()
                 .formLogin()
@@ -76,7 +76,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                     .defaultSuccessUrl("/")
                     .permitAll()// 自定义登陆页面路径
                     .and()
-                .logout().logoutSuccessUrl("/");// 退出后到首页
+                .logout()
+//                    .logoutUrl("/zdy_login")
+                    .logoutSuccessUrl("/")// 退出后到首页
+                    .and()
+                .rememberMe()
+                    .tokenValiditySeconds(30*60).key("rememberKey");//默认情况下，私匙的名为SpringSecured
 //                     .and()
 //                .sessionManagement().invalidSessionUrl("session/invalid");    //session过期后跳转的URL
 //                .invalidateHttpSession(true).deleteCookies("JSESSIONID")
