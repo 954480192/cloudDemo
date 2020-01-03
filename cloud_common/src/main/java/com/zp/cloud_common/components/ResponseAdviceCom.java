@@ -16,20 +16,21 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 public class ResponseAdviceCom  implements ResponseBodyAdvice{
     @Override
     public boolean supports(MethodParameter methodParameter, Class aClass) {
-        Object obj = methodParameter.getMethodAnnotation(NoResponseAnotion.class);
-        if(obj == null){
-            return true;
+        Object obj = methodParameter.getMethodAnnotation(IgnoreAnotion.class);
+        if(obj != null){
+            return false;
         }
-        log.info("-----------  {}方法不返回统一响应！  -------------",methodParameter.getMethod().getName());
-        return false;
+        return true;
     }
 
     @Override
     public Object beforeBodyWrite(Object o, MethodParameter methodParameter, MediaType mediaType, Class aClass, ServerHttpRequest serverHttpRequest, ServerHttpResponse serverHttpResponse) {
         if(o instanceof ResultVo){
             return o;
+        }else if(o instanceof  String){
+            return new Gson().toJson(ResponseVo.success(o));
         }
-        log.info("---------- 处理响应{}",new Gson().toJson(o));
+        log.info("-----------  {}方法需要封装统一响应！  -------------",methodParameter.getMethod().getName());
         return ResponseVo.success(o);
     }
 }

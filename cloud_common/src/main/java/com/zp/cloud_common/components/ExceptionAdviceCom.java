@@ -14,6 +14,7 @@ public class ExceptionAdviceCom {
     @ExceptionHandler(Exception.class)
     @ResponseBody
     public ResultVo exceptionHandler(Exception e){
+        e.printStackTrace();
         log.error(e.getMessage());
         return ResponseVo.error(-1,e.getMessage());
     }

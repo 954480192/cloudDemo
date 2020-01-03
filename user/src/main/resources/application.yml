@@ -73,7 +73,18 @@ spring:
   sleuth:
     sampler:
       probability: 1.0 #抓取100%的日志 默认0.1
-
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+    #虚拟host 可以不设置,使用server默认host
+    virtual-host: JCcccHost
+    #消息确认配置项
+    #确认消息已发送到交换机(Exchange)
+    publisher-confirms: true
+    #确认消息已发送到队列(Queue)
+    publisher-returns: true
 #---------------------OAuth2---------------------
 security:
   oauth2:

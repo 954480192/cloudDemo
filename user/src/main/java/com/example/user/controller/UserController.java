@@ -6,6 +6,7 @@ import com.example.user.util.Message;
 //import org.apache.shiro.authc.UsernamePasswordToken;
 //import org.apache.shiro.authz.annotation.RequiresPermissions;
 //import org.apache.shiro.subject.Subject;
+import com.zp.cloud_common.components.ErrorEnum;
 import com.zp.cloud_common.components.UserException;
 import com.zp.cloud_common.utils.ResponseVo;
 import com.zp.cloud_common.utils.ResultVo;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 @Slf4j
@@ -27,8 +29,9 @@ public class UserController {
 
     @RequestMapping("test")
     public Object test(){
-        throw new UserException(90,"抛出异常------");
-//        return userService.getAll();
+        throw new UserException(ErrorEnum.PARAMS_EMPTY);
+//        List list = userService.getAll();
+//        return list;
     }
 
     @RequestMapping("test1")
