@@ -8,6 +8,7 @@ import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
 
 /**
  *消费者确认
@@ -23,6 +24,8 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class MessageListenerConfig {
+    @Autowired
+    Environment environment;
  
     @Autowired
     private CachingConnectionFactory connectionFactory;
@@ -37,8 +40,13 @@ public class MessageListenerConfig {
     @Bean
     public SimpleMessageListenerContainer simpleMessageListenerContainer() {
         SimpleMessageListenerContainer container = new SimpleMessageListenerContainer(connectionFactory);
+        //并发配置
+//        environment.getProperty("",Integer.class);
         container.setConcurrentConsumers(1);
         container.setMaxConcurrentConsumers(1);
+        container.setPrefetchCount(2);// 预拉取数
+
+        //确认
         container.setAcknowledgeMode(AcknowledgeMode.MANUAL); // RabbitMQ默认是自动确认，这里改为手动确认消息
         container.setQueues(directRabbitConfig.Test1DirectQueue());
         container.setMessageListener(directReceiver);
