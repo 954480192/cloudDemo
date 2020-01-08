@@ -26,7 +26,7 @@ import org.springframework.core.env.Environment;
 public class MessageListenerConfig {
     @Autowired
     Environment environment;
- 
+
     @Autowired
     private CachingConnectionFactory connectionFactory;
     @Autowired

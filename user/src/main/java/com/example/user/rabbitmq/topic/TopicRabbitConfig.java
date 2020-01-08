@@ -42,5 +42,5 @@ public class TopicRabbitConfig {
     Binding bindingExchangeMessage2() {
         return BindingBuilder.bind(secondQueue()).to(exchange()).with("topic.#");
     }
- 
+
 }

@@ -12,7 +12,7 @@ import java.util.Map;
 @Component
 @RabbitListener(queues = "Test1DirectQueue")//监听的队列名称 TestDirectQueue
 public class Direct1Receiver implements ChannelAwareMessageListener {
- 
+
     @Override
     public void onMessage(Message message, Channel channel) throws Exception {
         long deliveryTag = message.getMessageProperties().getDeliveryTag();
@@ -32,7 +32,7 @@ public class Direct1Receiver implements ChannelAwareMessageListener {
             e.printStackTrace();
         }
     }
- 
+
     //{key=value,key=value,key=value} 格式转换成map
     private Map<String, String> mapStringToMap(String str) {
         str = str.substring(1, str.length() - 1);

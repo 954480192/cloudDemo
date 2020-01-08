@@ -31,6 +31,19 @@ public class SendMessageController {
         rabbitTemplate.convertAndSend(RabitConstant.DIRECT_EXCHANGE_A, RabitConstant.DIRECT_ROUTINGKEY_A, map);
         return "ok";
     }
+    @GetMapping("/sendDirectMessage1")
+    public String sendDirectMessage1() {
+        String messageId = String.valueOf(UUID.randomUUID());
+        String messageData = "test message, hello!";
+        String createTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        Map<String, Object> map = new HashMap<>();
+        map.put("messageId", messageId);
+        map.put("messageData", messageData);
+        map.put("createTime", createTime);
+        //将消息携带绑定键值：TestDirectRouting 发送到交换机TestDirectExchange
+        rabbitTemplate.convertAndSend("test1Exchange", "test1", map);
+        return "ok";
+    }
     @GetMapping("/sendTopicMessage1")
     public String sendTopicMessage1() {
         String messageId = String.valueOf(UUID.randomUUID());
