@@ -24,6 +24,7 @@
         <option value="$PROJECT_DIR$/common/pom.xml" />
         <option value="$PROJECT_DIR$/sleuth/pom.xml" />
         <option value="$PROJECT_DIR$/cloud_common/pom.xml" />
+        <option value="$PROJECT_DIR$/jpa/pom.xml" />
       </list>
     </option>
   </component>
