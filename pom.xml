@@ -19,6 +19,7 @@
         <module>Eureka_Client</module>
         <module>EurekaFeign</module>
         <module>zuul</module>
+        <module>user</module>
     </modules>
 
     <properties>
